@@ -39,6 +39,15 @@ should you test them against each other!
 should you test them between containers.
 * Have fun!
 
+If you want to test a browser in the Docker container, 
+then you can either use `curl` or `wget` or another command line browser:
+* https://www.brow.sh/
+* lynx -vikeys
+* w3m
+* links
+* lynx
+* elinks
+
 ## Part 0: Docker
 
 ### Learn Docker:

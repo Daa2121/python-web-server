@@ -560,6 +560,10 @@ doctest_tests() {
         :
         doctest_string="junk"
         # likely these exist for bash
+    elif [ "$language" = "rust" ]; then
+        :
+        doctest_string="junk"
+        # likely these exist for rust
     fi
     if grep "$doctest_string" "$1" &>/dev/null; then
         section
