@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TERM was "dumb" on docker...
+[ "$TERM" = "dumb" ] && export TERM=screen-256color
+
 # Clears the screen
 tput reset
 BLACK=$(tput setaf 0)
@@ -263,6 +266,7 @@ stdio_tests() {
 
     # For C++, build the student's main()
     if [ "$language" = "cpp" ]; then
+        rm -f program
         prog_name=("./program" "$main_file_arguments")
         # g++ -Wall -Werror -Wpedantic -g -std=c++14 $1 -o "$prog_name"
         # TODO: Can this be any more discerning, in case of multiple main()s?
@@ -374,6 +378,7 @@ arg_tests() {
 
     # For C++, build the student's main()
     if [ "$language" = "cpp" ]; then
+        rm -f program
         prog_name=("./program")
         # g++ -Wall -Werror -Wpedantic -g -std=c++14 $1 -o "$prog_name"
         # TODO: Can this be any more discerning, in case of multiple main()s?
@@ -737,8 +742,6 @@ if [ "$enable_format_check" = true ]; then
         [ $annoying_nodebug = 'd' ] && echo -e "\nSee $ ""$MAGENTA rustfmt --help$RESET for more detail."
         if command -v rustfmt >/dev/null 2>&1; then
             rustfmt --check ./src/*.rs
-        elif [ -x ./.admin_files/rustfmt ]; then
-            ./.admin_files/rustfmt --check ./src/*.rs
         else
             echo "Install rustfmt to run the rust format check!"
             (exit 1)
