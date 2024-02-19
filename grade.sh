@@ -56,9 +56,10 @@ student_file="results.txt"
 # $ file file.whatever
 declare -A file_arr
 file_arr=(
-    ["iactuallytestedthis-web_server.png"]="PNG image data"
-    ["iactuallytestedthis-client_browser.png"]="PNG image data"
+    ["iactuallytestedthis-dockerclient-dockerserver.png"]="PNG image data"
+    ["iactuallytestedthis-dockerserver-hostbrowser.png"]="PNG image data"
     ["report.md"]="ASCII text"
+    ["docker-compose.yml"]="ASCII text"
 )
 ######## <- File and type existence tests ########
 
