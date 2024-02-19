@@ -5,9 +5,9 @@ Welcome to the World Wide Web (HTTP)
 
 ## Deliverables
 * `web_server.py`
-* `iactuallytestedthis-web_server.png`
+* `iactuallytestedthis-dockerclient-dockerserver.png`
+* `iactuallytestedthis-dockerserver-hostbrowser.png`
 * `client_browser.py`
-* `iactuallytestedthis-client_browser.png`
 * `report.md`
 
 ## Summary
@@ -27,12 +27,9 @@ Open it to see what commands we run,
 and run them yourself manually!
 
 ## Hints
-* To debug your web server:
-    1. Open Wireshark
-    2. Open a browser, have it visit your server.
-* To debug your web client:
-    1. Open Wireshark
-    2. Have it actually "visit" a real website.
+* To debug your web server, open a browser, have it visit your server.
+* To debug your web client, have it actually "visit" a real website.
+* You can have Wireshark in your host watch ports in the container by publishing those ports.
 * Only after debugging each with a known correct server/client,
 should you test them against each other!
 * Only after testing them against each other in a single docker container, 
