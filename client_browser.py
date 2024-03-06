@@ -20,17 +20,31 @@ if len(sys.argv) != 4:
 else:
     # Delete the pass and do your arg parsing here.
     # Hint, you may need to get an IP from a hostame.
-    pass
+    server_hostname = sys.argv[1]
+    server_ip = socket.gethostbyname(server_hostname)
+    server_port = int(sys.argv[2])
+    file_name = sys.argv[3]
+
 
 try:
     client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
     # Delete the pass and make your GET request here
-    pass
-
+    client_socket.connect((server_ip,server_port))
+    request = f"GET /{file_name} HTTP/1.1\r\nHost: {server_hostname}\r\n\r\n"
+    client_socket.send(request.encode())
     # Delete the pass and parse the return data here.
     # Hint: a loop helps to make sure you got all the data.
     # Just print what's returned from the server.
-    pass
+    response = b""
+    while True:
+        data = client_socket.recv(1024)
+        if not data:
+            break
+        response += data
+
+    print(response.decode())
+
+
 
 except Exception as e:
     print("Exception was: ", e)
