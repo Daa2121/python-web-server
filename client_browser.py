@@ -22,6 +22,7 @@ else:
     # Hint, you may need to get an IP from a hostame.
     server_hostname = sys.argv[1]
     server_ip = socket.gethostbyname(server_hostname)
+    print(server_ip)
     server_port = int(sys.argv[2])
     file_name = sys.argv[3]
 
@@ -29,7 +30,7 @@ else:
 try:
     client_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
     # Delete the pass and make your GET request here
-    client_socket.connect((server_ip,server_port))
+    client_socket.connect((server_ip, server_port))
     request = f"GET /{file_name} HTTP/1.1\r\nHost: {server_hostname}\r\n\r\n"
     client_socket.send(request.encode())
     # Delete the pass and parse the return data here.
@@ -43,7 +44,6 @@ try:
         response += data
 
     print(response.decode())
-
 
 
 except Exception as e:
